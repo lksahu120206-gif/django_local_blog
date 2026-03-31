@@ -2,8 +2,20 @@
 <html>
 <head>
   {% load static %}
+  {% load blog_tags %}
   <title>{% block title %}Django Blog{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+  <style>
+    .container { display: flex; max-width: 1200px; margin: 0 auto; gap: 2rem; padding: 2rem; }
+    #content { flex: 2; }
+    #sidebar { flex: 1; min-width: 250px; }
+    #sidebar h3 { margin-top: 0; border-bottom: 2px solid #667eea; padding-bottom: 0.5rem; }
+    #sidebar ul { list-style: none; padding: 0; }
+    #sidebar li { margin-bottom: 0.5rem; }
+    #sidebar a { text-decoration: none; color: #333; }
+    #sidebar a:hover { color: #667eea; }
+    @media (max-width: 768px) { .container { flex-direction: column; } }
+  </style>
 </head>
 <body>
   <header style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; text-align: center;">
@@ -13,9 +25,15 @@
     </nav>
   </header>
   <main>
-    <div id="content">
-      {% block content %}
-      {% endblock %}
+    <div class="container">
+      <div id="content">
+        {% block content %}
+        {% endblock %}
+      </div>
+      <aside id="sidebar">
+        <h3>Latest Posts</h3>
+        {% latest_posts 3 %}
+      </aside>
     </div>
   </main>
   <footer style="background: #34495e; color: white; text-align: center; padding: 1rem; margin-top: 3rem;">
