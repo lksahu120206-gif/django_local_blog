@@ -1,0 +1,54 @@
+{% extends "blog/base.html" %}
+{% block title %}Share a post{% endblock %}
+{% block content %}
+  {% if sent %}
+    <h1>E-mail successfully sent</h1>
+    <p>
+      "{{ post.title }}" was successfully sent to {{ form.cleaned_data.email_to }}.
+    </p>
+  {% else %}
+    <h1>Share "{{ post.title }}" by e-mail</h1>
+    <form id="share-form" method="post">
+  {{ form.as_p }}
+  {% csrf_token %}
+  <input type="submit" value="Send e-mail">
+</form>
+
+<div id="share-message" style="display: none; color: green; margin-top: 10px;"></div>
+
+<script>
+  document.getElementById('share-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch(window.location.href, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+      }
+    })
+    .then(response => {
+  if (!response.ok) {
+    throw new Error('Server error');
+  }
+  return response.json();
+})
+    .then(data => {
+      if (data.success) {
+        document.getElementById('share-message').innerHTML =
+          'Email sent successfully to ' + data.email_to + '!';
+        document.getElementById('share-message').style.display = 'block';
+        this.reset();
+      } else {
+        alert('Error sending email');
+      }
+    })
+    .catch(error => {
+      alert('Error: ' + error);
+    });
+  });
+</script>
+  {% endif %}
+{% endblock %}    
