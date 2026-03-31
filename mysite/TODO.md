@@ -1,10 +1,11 @@
-# Fix "Post has no attribute 'published'" Error
+go# Add Markdown Support to Blog
 
 ## Steps:
-- [x] Step 1: Update blog/models.py - Added STATUS_CHOICES, objects=Manager(), published=PublishedManager() to Post
-- [ ] Step 2: python manage.py runserver (restart server)
-- [ ] Step 3: Test - Visit post list/detail, confirm no errors, Post.published works in shell if needed (`python manage.py shell` → from blog.models import Post; Post.published.all())
+- [x] Step 1: pip install markdown ✓
+- [x] Step 2: Edit detail.html - Added {% load blog_tags %}, {{ post.body|linebreaks }} → {{ post.body|markdown }} ✓
+- [ ] Step 3: python manage.py runserver (restart)
+- [ ] Step 4: Test Markdown rendering in post detail
 - [x] Step 5: Complete
 
-Progress: models.py fixed. No migration needed (no DB change).
+Progress: Template updated.
 
