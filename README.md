@@ -1,100 +1,69 @@
-\# Django Blog Application
+# Django Blog Application
 
+This is a blog application I built while learning Django. The goal of this project was to understand how real-world web applications are structured and how different features connect together.
 
+## Features
 
-\## 🚀 Features
+* Create and manage blog posts
+* Comment system
+* Tagging using django-taggit
+* Similar posts recommendation (based on tags)
+* Most commented posts section
+* Share posts via email (AJAX-based)
 
-\- Create and manage blog posts
+## What I Learned
 
-\- Comment system
+* How Django models, views, and templates work together
+* Using custom managers (`Post.published`)
+* Working with QuerySets, annotations, and aggregation
+* Handling forms and AJAX requests
+* Structuring a project for scalability
 
-\- Tagging system (django-taggit)
+## Tech Stack
 
-\- Similar posts recommendation
+* Python
+* Django
+* SQLite
+* HTML, CSS
+* JavaScript (Fetch API)
 
-\- Most commented posts
+## How to Run
 
-\- Email sharing feature (AJAX)
+Clone the repo:
 
-\- Clean UI with templates
+```
+git clone <your-repo-link>
+```
 
+Go to project folder:
 
+```
+cd mysite
+```
 
-\## 🛠️ Tech Stack
+Create virtual environment:
 
-\- Python
+```
+python -m venv env
+env\Scripts\activate
+```
 
-\- Django
+Install dependencies:
 
-\- SQLite (default)
+```
+pip install -r requirements.txt
+```
 
-\- HTML/CSS
+Run server:
 
-\- JavaScript (Fetch API)
+```
+python manage.py runserver
+```
 
+## Notes
 
+This project is still a work in progress. I plan to add authentication and improve the UI in future updates.
 
-\## ⚙️ Setup Instructions
-
-
-
-1\. Clone the repo:
-
-&#x20;  git clone <your-repo-link>
-
-
-
-2\. Go to project folder:
-
-&#x20;  cd mysite
-
-
-
-3\. Create virtual environment:
-
-&#x20;  python -m venv env
-
-
-
-4\. Activate it:
-
-&#x20;  env\\Scripts\\activate
-
-
-
-5\. Install dependencies:
-
-&#x20;  pip install -r requirements.txt
-
-
-
-6\. Run migrations:
-
-&#x20;  python manage.py migrate
-
-
-
-7\. Run server:
-
-&#x20;  python manage.py runserver
-
-
-
-\## 📌 Features Implemented (Chapter 3)
-
-\- Tagging system
-
-\- Similar posts logic
-
-\- Custom template tags
-
-\- Most commented posts
-
-\- Email sharing system
-
-
-
-\## 👨‍💻 Author
+## Author
 
 Lalit Kishor Sahu
-
